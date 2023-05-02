@@ -1,0 +1,49 @@
+﻿@model List<RockyApp.Models.ApplicationType>
+
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary">Application List</h2>
+        </div>
+        <div class="col-6 text-right">
+            <a asp-controller="ApplicationType" asp-action="Create" class="btn btn-primary">
+                <i class="fa-solid fa-plus"></i> &nbsp; Create New Application Type
+            </a>
+        </div>
+    </div>
+    <br /><br />
+    @if (Model.Count() > 0)
+    {
+        <table class="table table-bordered table-striped" style="width:100%">
+            <tr>
+                <th>Name</th>
+                <th></th>
+            </tr>
+
+            @foreach (var t in Model)
+            {
+                <tr>
+                    <td width="50%">@t.Name</td>
+                    <td>
+                        <div class="w-100 btn-group" role="group">
+                            <a asp-controller="ApplicationType" asp-route-Id="@t.Id" asp-action="Edit" class="w-50 btn btn-primary">
+                                <i class="fa-solid fa-user-pen"></i> &nbsp; Edit
+                            </a>
+                            <a asp-controller="ApplicationType" asp-route-Id="@t.Id" asp-action="Delete" class="w-50 btn btn-danger">
+                                <i class="fa-solid fa-user-xmark"></i> &nbsp; Delete
+                            </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+
+
+
+        </table>
+    }
+    else
+    {
+        <p>No Application Exists.</p>
+    }
+
+</div>
